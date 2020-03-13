@@ -23,12 +23,12 @@ public class CollectionsController {
     @GetMapping(path = "/map")
     public List<Object> listDemo() {
         List<Student> students = Arrays.asList(
-                student("Jhon Deany", "B", 23, 4.2),
-                student("Catalina Souza", "A", 23, 4.8),
-                student("Alex Suarez", "A", 22, 4.0),
-                student("Brienne Sanders", "B", 29, 2.0),
-                student("Brian Larson", "B", 29, 2.8),
-                student("Alice Miller", "A", 20, 3.7)
+                Student.of("Catalina Souza", "A", 23, 4.8),
+                Student.of("Jhon Deany", "B", 23, 4.2),
+                Student.of("Alex Suarez", "A", 22, 4.0),
+                Student.of("Brienne Sanders", "B", 29, 2.0),
+                Student.of("Brian Larson", "B", 29, 2.8),
+                Student.of("Alice Miller", "A", 20, 3.7)
         );
 
         out.println("Dev tools Test!");
@@ -44,10 +44,6 @@ public class CollectionsController {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
         return Arrays.asList(averageGrade, groupAverage);
-    }
-
-    private Student student(String name, String group, int age, double grade) {
-        return new Student(name, group, age, grade);
     }
 
     private Double computeAverage(List<Student> students) {
